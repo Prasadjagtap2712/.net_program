@@ -1,0 +1,701 @@
+1.1 Write a VB.Net Program to display the numbers continuously in TextBox by clicking on Button.
+
+Public Class Form1
+Dim a As Integer = 1
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+a = a + 1
+
+TextBox1.Text = a.ToString()
+
+End Sub
+End Class  
+
+1.2.Write a VB.Net program to accept the details of Employee (ENO, EName Salary) and store it into the database and display it on gridview control
+Imports System.Data.SqlClient
+Public Class Form1
+Dim cn As New SqlConnection
+Dim cmd As New sqlcommand
+Dim datadapter As New sqlDataAdapter
+
+
+Dim dt As New DataTable
+Dim cnt As New Integer
+Dim str As String
+
+Private Sub cmdNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNew.Click
+txtE_Id.Clear()
+txtE_Name.Clear()
+txtDes.Clear()
+txtDOJ.Clear()
+txtE_Id.Focus()
+End Sub
+
+Private Sub cmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
+cn = New SqlConnection("Data Source=Bhushan\SQLEXPRESS;Initial Catalog=Employee2;Integrated Security=True;Pooling=False")
+cn.Open()
+str = "insert into employee2 values (" & CInt(txtE_Id.Text) & " , '" & txtE_Name.Text & "', '" & txtDes.Text & "', '" & txtDOJ.Text & "')"
+cmd = New sqlcommand(str, cn)
+cnt = cmd.ExecuteNonQuery
+If (cnt > 0) Then
+MsgBox("Record Inserted Successfully")
+End If
+End Sub
+
+Private Sub cmdShow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdShow.Click
+DataGridView1.DataSource = Nothing
+cn = New SqlConnection("Data Source=Bhushan\SQLEXPRESS;Initial Catalog=Employee2;Integrated Security=True;Pooling=False")
+cn.Open()
+str = "select * from employee2"
+cmd = New sqlcommand(str, cn)
+datadapter = New sqlDataAdapter(cmd)
+datadapter.Fill(dt)
+DataGridView1.DataSource = dt
+cn.Close()
+End Sub
+
+Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+End Sub
+End Class
+
+2.1. Write a Vb.Net program to move the Text “Pune University” continuously from Left to Right and Vice Versa.
+1)Take  Label and timer control on design form.
+2) Set Label Text
+3) Set timer control Enabled property as True
+Public Class Form1
+
+Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+If Label1.Left >= Me.Width Then
+Label1.Left = -100
+Else
+Label1.Left = Label1.Left + 10
+End If
+End Sub
+End Class
+
+2.2 
+ using System;
+using System .Collections. Generic;
+using System Linq;
+using System Text;
+
+namespace Console Application23 {
+
+class department {
+
+public string accept()
+
+Console.WriteLine("enter emp name ");
+string ename=Console.ReadLine();
+return ename;
+}
+public void print( string name)
+{
+
+Console.WriteLine(" In Sale Department" -name- "is working");
+} 
+public void printl(string name)
+{
+Console.WriteLine( "In HR Department" -name- "is working");
+}
+}
+ class sale : department
+{
+ public void display()
+{
+
+Console.WriteLine("Sale Department");
+}
+}
+
+class HumanResource : department 
+}
+ public void display2()
+
+(
+
+Console.WriteLine("HR Department");
+}
+}
+ class Program
+
+static void Main(string[] args)
+{
+department d = new department();
+ sale s = new sale();
+ HumanResource h = new HumanResource();
+ s.display();
+string name=s.accept();
+
+h.display2();
+name=h.accept():
+d.print(name);
+d.print1(name);
+Console.WriteLine("enter press key to exit");
+Console.ReadLine();
+}
+}
+}
+ 3.1 Write a program in C# .Net to create a function for the sum of two numbers.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication7
+{
+class Program
+{
+public static int Sum(int num1, int num2)
+{
+int total;
+total = num1 + num2;
+return total;
+}
+static void Main(string[] args)
+{
+Console.Write("\n\nFunction to calculate the sum of two numbers :\n");
+Console.Write("--------------------------------------------------\n");
+Console.Write("Enter a number: ");
+int n1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter another number: ");
+int n2 = Convert.ToInt32(Console.ReadLine());
+int n3 = Sum(n1, n2);
+Console.WriteLine("\nThe sum of two numbers is : {0}\n",n3.ToString());
+Console.WriteLine("press any key to exit...");
+Console.ReadKey();
+}
+}
+}
+
+
+
+b) Write a Vb.net program to design the following form; it contains the three menus Color (Red, Blue, and Green), Window (Maximize, Minimize, and Restore) and Exit. On Selection of any menu or submenu result should affect the form control( for example if user selected Red color from Color menu back color of form should get changed to Red and if user selected Maximize from Window Menu then form should 
+Form:- 
+ 
+Program:-
+Public Class slip16
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+    Private Sub RedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RedToolStripMenuItem.Click
+        Me.BackColor = Color.Red
+    End Sub
+
+Private Sub BlueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BlueToolStripMenuItem.Click
+        Me.BackColor = Color.Blue
+    End Sub
+
+    Private Sub GreenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GreenToolStripMenuItem.Click
+        Me.BackColor = Color.Green
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
+        Me.Close()
+    End Sub
+
+    Private Sub MaximizedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MaximizedToolStripMenuItem.Click
+        Me.WindowState = FormWindowState.Maximized
+    End Sub
+
+    Private Sub MinimizedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MinimizedToolStripMenuItem.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        Me.WindowState = FormWindowState.Normal
+    End Sub
+End Class 
+
+Slip no 4
+4.1. Design a VB.net form to pick a date from DateTimePicker Control and display day, month and year in separate text boxes.
+Public Class Form1
+
+Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
+Dim d As DateTime
+d = DateTimePicker1.Value
+TextBox1.Text = d.Day
+TextBox2.Text = d.Month
+TextBox3.Text = d.Year
+End Sub
+End Class
+
+B)4.2 Write C# program to make a class named Fruit with a data member to calculate the number of fruits in a basket. Create two other class named Apples and Mangoes to calculate the number of apples and mangoes in the basket. Display total number of fruits in the basket.
+
+using system;
+namespace FruitBasket
+{
+class Fruit
+{
+
+public static int NumberOfFruits { get; protected set; }
+}
+
+public class Apple : Fruit
+{
+
+public Apple()
+{
+NumberOfApples++; 
+NumberOfFruits++; 
+}
+
+
+public static int NumberOfApples { get; protected set; }
+}
+public class Mango : Fruit
+{
+public Mango()
+{
+NumberOfMangoes++; 
+NumberOfFruits++; 
+}
+
+public static int NumberOfMangoes { get; protected set; }
+}
+public class Program
+{
+public static void Main(string[] args)
+{
+var apple = new Apple();
+var apple2 = new Apple();
+var apple3 = new Apple();
+
+
+var mango = new Mango();
+var mango2 = new Mango();
+var mango3 = new Mango();
+var mango4 = new Mango();
+var mango5 = new Mango();
+
+
+Console.WriteLine("Total number of apples in the basket "+ (Apple.NumberOfApples));
+Console.WriteLine("Total number of mangoes in the basket"+(Mango.NumberOfMangoes));
+Console.WriteLine("Total number of fruits in the basket "+ (Fruit.NumberOfFruits));
+Console.WriteLine("press any key to exit...");
+Console.ReadKey();
+}
+}
+}
+
+5.1  Write a VB.NET program to accept a character from keyboard and check whether it is vowel or consonant. Also display the case of that character.
+Public Class Form1
+
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+Dim ch As Char
+ch = TextBox1.Text
+Select ch
+Case "A", "E", "I", "O", "U"
+MessageBox.Show(ch + " is Vowel And UpperCase")
+Case "a", "e", "i", "o", "u"
+MessageBox.Show(ch + " is Vowel And LowerCase")
+Case Else
+MessageBox.Show(ch + " is Not Vowel")
+End Select
+End Sub
+End Class
+ 
+5.2  Write a c#.Net program for multiplication of matrices.     
+using System;
+namespace MatrixMultiplicationDemo {
+   class Example {
+      static void Main(string[] args) {
+         int m = 2, n = 3, p = 3, q = 3, i, j;
+         int[,] a = {{1, 4, 2}, {2, 5, 1}};
+         int[,] b = {{3, 4, 2}, {3, 5, 7}, {1, 2, 1}};
+         Console.WriteLine("Matrix a:");
+         for (i = 0; i < m; i++) {
+            for (j = 0; j < n; j++) {
+               Console.Write(a[i, j] + " ");
+            }
+            Console.WriteLine();
+         }
+         Console.WriteLine("Matrix b:");
+         for (i = 0; i < p; i++) {
+            for (j = 0; j < q; j++) {
+               Console.Write(b[i, j] + " ");
+            }
+            Console.WriteLine();
+         }
+         if(n! = p) {
+            Console.WriteLine("Matrix multiplication not possible");
+         } else {
+            int[,] c = new int[m, q];
+            for (i = 0; i < m; i++) {
+               for (j = 0; j < q; j++) {
+                  c[i, j] = 0;
+                  for (int k = 0; k < n; k++) {
+                     c[i, j] += a[i, k] * b[k, j];
+                  }
+               }
+            }
+            Console.WriteLine("The product of the two matrices is :");
+            for (i = 0; i < m; i++) {
+               for (j = 0; j < n; j++) {
+                  Console.Write(c[i, j] + "\t");
+               }
+               Console.WriteLine();
+            }
+         }
+      }
+   }
+}
+
+Slip no 7
+A) Write a Menu driven program in C#.Net to perform following functionality: Addition, Multiplication, Subtraction, Division.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace program
+{
+class Program
+{
+static void Main(string[] args)
+{
+int num1, num2, opt;
+
+Console.Write("\n\n");
+Console.Write("A menu driven program for a simple calculator:\n");
+Console.Write("------------------------------------------------");
+Console.Write("\n\n");
+
+
+Console.Write("Enter the first Integer :");
+num1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter the second Integer :");
+num2 = Convert.ToInt32(Console.ReadLine());
+
+
+Console.Write("\nHere are the options :\n");
+Console.Write("1-Addition.\n2-Substraction.\n3-Multiplication.\n4-Division.\n5-Exit.\n");
+Console.Write("\nInput your choice :");
+opt = Convert.ToInt32(Console.ReadLine());
+
+switch (opt)
+{
+case 1:
+Console.Write("The Addition of  {0} and {1} is: {2}\n", num1, num2, (num1 + num2));
+break;
+
+case 2:
+Console.Write("The Substraction of {0}  and {1} is: {2}\n", num1, num2, (num1 - num2));
+break;
+
+case 3:
+Console.Write("The Multiplication of {0}  and {1} is: {2}\n", num1, num2, (num1 * num2));
+break;
+
+case 4:
+if (num2 == 0)
+{
+
+{
+Console.Write("The second integer is zero. Devide by zero.\n");
+}
+else
+{
+Console.Write("The Division of {0}  and {1} is : {2}\n", num1, num2, (num1 / num2));
+}
+break;
+
+case 5:
+break;
+
+default:
+Console.Write("Input correct option\n");
+break;
+}
+Console.WriteLine("press anykey to exit");
+Console.ReadKey();
+}
+}
+
+Slip no 10 
+a)	  Write a program that demonstrates the use of primitive data types in C#. The program should also support the type conversion of :
+●	Integer to String
+●	String to Integer
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace program
+{
+class Program
+{
+static void Main(string[] args)
+{
+if (typeof(int).IsPrimitive == true)
+{
+Console.WriteLine("Primitive data type");
+}
+else
+{
+Console.WriteLine("Not a primitive data type");
+}
+
+if (typeof(float).IsPrimitive == true)
+{
+Console.WriteLine("Primitive data type");
+}
+else
+{
+Console.WriteLine("Not a primitive data type");
+}
+
+if (typeof(double).IsPrimitive == true)
+
+{
+
+Console.WriteLine("Primitive data type");
+
+}
+
+else
+{
+
+Console.WriteLine("Not a primitive data type");
+}
+int i = 12;
+double d = 765.12;
+float f = 56.123F;
+
+Console.WriteLine(Convert.ToString(f));
+Console.WriteLine(Convert.ToInt32(d));
+Console.WriteLine(Convert.ToUInt32(f));
+Console.WriteLine(Convert.ToDouble(i));
+Console.WriteLine("Press any key to exit");
+Console.ReadKey();
+}
+}
+}
+ 
+b)10.2  Write a VB.NET program to design following screen, accept the details from the user. Clicking on Submit button Net Salary should be calculated and displayed into the Textbox. Display the Messagebox informing the Name and Net Salary of employee.
+                         
+ 
+Public Class Form1
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim netsal As Double
+        netsal = Val(TextBox2.Text) + Val(TextBox3.Text) + Val(TextBox4.Text) + Val(TextBox5.Text) + Val(TextBox6.Text) + Val(TextBox7.Text) + Val(TextBox8.Text)
+        TextBox9.Text = netsal
+        MsgBox("Name : " & TextBox1.Text & vbNewLine & "Net Salary : " & netsal)
+    End Sub
+End Class
+
+11.1 Write a VB.net program for blinking an image..
+Public Class slip2
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        PictureBox1.Visible = Not PictureBox1.Visible
+    End Sub
+End Class
+
+12.1 Write a program in C#.Net to separate the individual characters from a String.
+using System;  
+ublic class Exercise3
+{  
+    public static void Main() 
+        {
+            string str; 
+            int l=0;
+	
+      Console.Write("\n\nSeparate the individual characters from a string :\n");
+      Console.Write("------------------------------------------------------\n"); 	
+      Console.Write("Input the string : ");
+      str = Console.ReadLine();
+	  Console.Write("The characters of the string are  :  ");
+            while (l <= str.Length - 1)
+           {
+                Console.Write("{0} ", str[l]);
+                l++;
+            }
+                Console.Write("\n\n");
+        }
+}
+
+12.2   Write a program in C#.Net  to find the length of a string. 
+using System;  
+public class Exercise2
+{  
+    public static void Main() 
+{
+    string str; /* Declares a string of size 100 */
+    int l= 0;
+	
+      Console.Write("\n\nFind the length of a string :\n");
+      Console.Write("---------------------------------\n"); 	
+      Console.Write("Input the string : ");
+      str = Console.ReadLine();
+
+         foreach(char chr in str)
+        {
+            l += 1;
+
+        }
+
+   Console.Write("Length of the string is : {0}\n\n", l);
+	}
+}
+
+   Write a program in C#.Net to read n numbers in an array and display it in reverse order.
+
+using System;  
+public class Exercise2  
+{  
+    public static void Main() 
+{
+   int i,n;
+   int[] a= new int[100];
+   
+       Console.Write("\n\nRead n number of values in an array and display it in reverse order:\n");
+       Console.Write("------------------------------------------------------------------------\n");
+   
+   Console.Write("Input the number of elements to store in the array :");
+   n = Convert.ToInt32(Console.ReadLine());    
+   
+   
+   Console.Write("Input {0} number of elements in the array :\n",n);
+   for(i=0;i<n;i++)
+{
+	  Console.Write("element - {0} : ",i);
+	  a[i] = Convert.ToInt32(Console.ReadLine()); 
+	  }
+      
+   Console.Write("\nThe values store into the array are : \n");
+   for(i=0;i<n;i++)
+     {
+	   Console.Write("{0}  ",a[i]);
+	 }
+ 
+   Console.Write("\n\nThe values store into the array in reverse are :\n");
+   for(i=n-1;i>=0;i--)
+      {
+	   Console.Write("{0} ",a[i]);
+	  }
+   Console.Write("\n\n");
+  } 
+} 
+
+
+A)	Write a program in C#.Net to find the sum of all elements of the array
+
+using System;
+using System.Linq;
+
+public class Example
+{
+public static void Main()
+{
+int[] array = { 1, 2, 3, 4, 5 };
+
+int sum = array.Sum();
+Console.WriteLine(sum);
+}
+}
+Or
+using System;
+
+public class Example
+
+{
+public static void Main()
+{
+int[] array = { 1, 2, 3, 4, 5 };
+
+int sum = 0;
+Array.ForEach(array, i => sum += i);
+
+Console.WriteLine(sum);
+}
+}
+
+
+B)Write a C# Program to accept and display ‘n’ student’s details such as Roll. No, Name, marks in three subjects, using class. Display percentage of each student.
+namespace Lab_3a
+{
+class students
+{
+public void data()
+{
+string name;
+int Rno;
+double eng, math, sci, obt_marks, total_marks = 300, per;
+Console.WriteLine("Enter Student Name: ");
+name = Console.ReadLine();
+Console.WriteLine("Enter Student Roll No: ");
+Rno = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter Marks of English: ");
+eng = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Enter Marks of Math: ");
+math = Convert.ToDouble(Console.ReadLine());
+Console.WriteLine("Enter Student Science: ");
+sci = Convert.ToDouble(Console.ReadLine());
+obt_marks = eng + math + sci;
+per = (obt_marks / total_marks) * 100;
+Console.WriteLine("------------------------------------------\n\n");
+Console.WriteLine("Name of Student is: {0}", name);
+Console.WriteLine("Student Age is : {0}", Rno);
+Console.WriteLine("Obtained Marks : {0}", obt_marks);
+Console.WriteLine("Percentage : {0}", per);
+}
+}
+class Program
+{
+static void Main()
+{
+int  i;
+Console.WriteLine("how many student info you want to enter ");
+int n = Convert.ToInt32(Console.ReadLine());
+students s = new students();
+for(i=0;i<=n;i++)
+s.data();
+Console.ReadKey();
+}
+}
+}
+
+b)Write a program in C# to create a function to display the n terms of Fibonacci sequence.
+
+using System;
+class funcexer8
+{
+    public static int Fibo(int nno)
+    {
+	int num1 = 0;
+	int num2 = 1;
+	
+	for (int i = 0; i < nno; i++)
+	{
+	    int temp = num1;
+	    num1 = num2;
+	    num2 = temp + num2;
+	}
+	return num1;
+    }
+    public static void Main()
+    {
+	  Console.Write("\n\nFunction : To display the n number Fibonacci series :\n");
+      Console.Write("------------------------------------------------------------\n");
+	  Console.Write("Input number of Fibonacci Series : ");
+      int n= Convert.ToInt32(Console.ReadLine());
+      
+	  Console.WriteLine("The Fibonacci series of "+n+" numbers is :");	  
+	for (int i = 0; i< n; i++)
+	{
+	    Console.Write(Fibo(i)+"  ");
+	}
+	Console.WriteLine();
+    }
+}
+
+
+
+
+
+
+
+
