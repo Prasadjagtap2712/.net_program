@@ -1,0 +1,45 @@
+Imports System.Data.SqlClient
+Public Class Form1
+Dim cn As New SqlConnection
+Dim cmd As New sqlcommand
+Dim datadapter As New sqlDataAdapter
+
+
+Dim dt As New DataTable
+Dim cnt As New Integer
+Dim str As String
+
+Private Sub cmdNew_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdNew.Click
+txtE_Id.Clear()
+txtE_Name.Clear()
+txtDes.Clear()
+txtDOJ.Clear()
+txtE_Id.Focus()
+End Sub
+
+Private Sub cmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
+cn = New SqlConnection("Data Source=Bhushan\SQLEXPRESS;Initial Catalog=Employee2;Integrated Security=True;Pooling=False")
+cn.Open()
+str = "insert into employee2 values (" & CInt(txtE_Id.Text) & " , '" & txtE_Name.Text & "', '" & txtDes.Text & "', '" & txtDOJ.Text & "')"
+cmd = New sqlcommand(str, cn)
+cnt = cmd.ExecuteNonQuery
+If (cnt > 0) Then
+MsgBox("Record Inserted Successfully")
+End If
+End Sub
+
+Private Sub cmdShow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdShow.Click
+DataGridView1.DataSource = Nothing
+cn = New SqlConnection("Data Source=Bhushan\SQLEXPRESS;Initial Catalog=Employee2;Integrated Security=True;Pooling=False")
+cn.Open()
+str = "select * from employee2"
+cmd = New sqlcommand(str, cn)
+datadapter = New sqlDataAdapter(cmd)
+datadapter.Fill(dt)
+DataGridView1.DataSource = dt
+cn.Close()
+End Sub
+
+Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+End Sub
+End Class
